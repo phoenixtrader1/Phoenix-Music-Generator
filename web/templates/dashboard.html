@@ -1,0 +1,16 @@
+<h2>Dashboard - {{username}}</h2>
+<p>Balance: {{balance}}</p>
+
+<form method="POST">
+    <input type="text" name="prompt" placeholder="Enter music prompt"><br>
+    <button type="submit">Generate Music</button>
+</form>
+
+<p>{{message}}</p>
+
+{% if output %}
+    <audio controls>
+        <source src="{{output}}" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+{% endif %}
