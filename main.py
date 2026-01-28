@@ -24,7 +24,10 @@ def dashboard():
             output = music.generate_music(prompt)
 
     balance = get_balance(username)
-    return render_template("dashboard.html", username=username, message=message, output=output, balance=balance)
-
-if __name__ == "__main__":
-    app.run(debug=True)
+    return render_template(
+        "dashboard.html",
+        username=username,
+        message=message,
+        output=output,
+        balance=balance
+    )
