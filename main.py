@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from ai import music
+from ai.music import generate_music
 from users.wallet import get_balance
 from utils.token import use_token
 
@@ -9,7 +9,7 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/dashboard", methods=["GET","POST"])
+@app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     username = request.args.get("user", "user1")
     message = ""
@@ -21,7 +21,7 @@ def dashboard():
         message = msg
 
         if success:
-            output = music.generate_music(prompt)
+            output = generate_music(prompt)
 
     balance = get_balance(username)
     return render_template(
